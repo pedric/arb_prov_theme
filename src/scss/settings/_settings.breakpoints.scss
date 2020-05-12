@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Breakpoint settings
+   ========================================================================== */
+
+$tiny: 320px !default;
+$small: 640px !default;
+$medium: 900px !default;
+$large: 1040px !default;
+
+$tiny-max: $tiny - 1;
+$small-max: $small - 1;
+$medium-max: $medium - 1;
+$large-max: $large - 1;
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
