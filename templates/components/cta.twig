@@ -1,0 +1,18 @@
+<div id="cta" class="cta">
+		<img
+		class="cta__image"
+		src="{{cta.image.sizes.large}}" 
+		alt="{{cta.image.alt}}"
+		srcset="
+		{{cta.image.sizes.thumbnail}} 200w,
+		{{cta.image.sizes.medium}} 300w,
+		{{cta.image.sizes.large}} 1000w,
+		">
+	<div class="cta__content-wrapper grid-container">
+		<div class="cta__content">
+			{{cta.body}}
+			<a class="cta__button" href="{{cta.link.url}}">{{cta.link.title}}<img class="cta__button-arrow" src="{{ site.theme.link }}/images/arrow_white.svg" alt="arrow pointing right"></a>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="hero">
+	<img
+	class="hero__image"
+	src="{{hero.image.sizes.large}}" 
+	alt="{{hero.image.alt}}"
+	srcset="
+	{{hero.image.sizes.thumbnail}} 200w,
+	{{hero.image.sizes.medium}} 300w,
+	{{hero.image.sizes.large}} 1000w,
+	">
+	<div class="hero__content">
+		{{hero.body}}
+	</div>
+	<a href="#cta" class="hero__button"><img class="hero__button-arrow" src="{{ site.theme.link }}/images/arrow_white.svg" alt="arrow pointing down"></a>
+</div>

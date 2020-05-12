@@ -1,0 +1,22 @@
+<header class="header" >
+	<div class="grid-container">
+		<div class="header__wrapper">
+			<div class="header__logo-wrapper">
+				<a class="header__linked-logo" href="{{site.url}}">
+					<img src="{{ site.theme.link }}/images/logo_negative.svg" src-set="" alt="Internetmedia Logo" />
+				</a>
+			</div>
+			<div class="header__toggle">
+				<div class="header__toggle-btn">
+					<span class="header__burger-slice"></span>
+					<span class="header__burger-slice"></span>
+					<span class="header__burger-slice"></span>
+				</div>
+			</div>
+		</div>
+		<h1 class="visually-hidden" role="banner">{{site.name}}</h1><!-- Hidden -->
+		{# <nav id="nav-main" class="nav-main" role="navigation">
+			{% include "menu.twig" with {'items': menu.get_items} %}
+		</nav> #}
+	</div>
+</header>

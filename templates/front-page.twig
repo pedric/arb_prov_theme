@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{% if hero %}
+	{% include 'components/hero.twig' %}
+{% endif %}
+
+{% if quote %}
+	{% include 'components/quote.twig' %}
+{% endif %}
+
+{% if cta %}
+	{% include 'components/cta.twig' %}
+{% endif %}
+
+{% if featured_posts %}
+	{% include 'components/featured_posts.twig' %}
+{% endif %}
+
+{% endblock %}

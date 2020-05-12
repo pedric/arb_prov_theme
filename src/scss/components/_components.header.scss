@@ -2,23 +2,32 @@
 
 	0% { transform: scale(1.0); }
 	80% { transform: scale(1.0); }
-	85% { transform: scale(1.1); }
+	85% { transform: scale(1.05); }
 	90% { transform: scale(1.0); }
-	95% { transform: scale(1.1); }
+	95% { transform: scale(1.05); }
 	100% { transform: scale(1.0); }
 }
 
 .header {
-	background-color: $blue;
-	padding-bottom: 7px;
+	position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+	padding: $spacing;
+	
+	.header__wrapper {
+		display: flex;
+    justify-content: space-between;
+    align-items: center;
+	}
 
-	&__content {
-		position: relative;
+	.header__logo-wrapper {
+		width: 250px;
 	}
 }
 
-.toggle-btn {
-		position: absolute;
+.header__toggle-btn {
+		// position: absolute;
 		top: 20px;
 		right: 10px;
 		z-index: 9999;
@@ -31,13 +40,14 @@
 
      &:hover { transform: scale(1.1); }
 
-		.burger-slice {
+		.header__burger-slice {
   		position: absolute;
   		top: 50%;
+  		left: 5px;
   		transform: translateY(-50%);
   		width: 40px;
   		height:2px;
-  		background-color: $color-white;
+  		background-color: #fff;
   		border-radius: 2px;
 
   		&:first-child {
@@ -50,7 +60,7 @@
   	}
 
   	&.active {
-  		.burger-slice {
+  		.header__burger-slice {
   			&:first-child {
 					margin-top: 0;
 	  		}
@@ -73,7 +83,6 @@ body { overflow-x: hidden } // hide "hidden" menu
 	margin-left: 0%;
 	top: 0;
 	right: 0;
-	background-color: $blue;
   // border-left: 1px solid $blue;
   z-index: 9998;
 	transition: all 0.15s ease-in-out;
@@ -92,7 +101,6 @@ body { overflow-x: hidden } // hide "hidden" menu
 			li {
 				padding: 4px 0px;
 				a {
-					color: $color-white;
 					text-decoration: none;
 					position: relative;
 					text-transform: uppercase;
@@ -104,7 +112,6 @@ body { overflow-x: hidden } // hide "hidden" menu
 						left: 0;
 						width: 0%;
 						height: 2px;
-						background-color: $color-white;
 						transition: all 0.2s linear;
 					}
 
@@ -117,3 +124,10 @@ body { overflow-x: hidden } // hide "hidden" menu
 			}
 		}
 	}
+
+.skip-link {
+	display: none;
+	 &:focus {
+	 		display: block;
+	 }
+}

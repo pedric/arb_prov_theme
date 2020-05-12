@@ -2,13 +2,10 @@
    Typography settings
    ========================================================================== */
 /* Font face / import */
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:200,400,700');
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:200,400,700');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap');
 
 /* Fonts */
-$font-regular: 'Work Sans', 'Helvetica Neue', Helvetica, sans-serif !default;
-$font-bold: 'Montserrat Alternates', 'Helvetica Neue', Helvetica, sans-serif !default;
-$font-mono: 'Courier New', courier, serif !default;
+$font-regular: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif !default;
 
 /* Size */
 $global-font-size: 1rem !default;

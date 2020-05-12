@@ -1,0 +1,9 @@
+<div class="featured_posts grid-container row">
+	{% for item in featured_posts %}
+		<div class="featured_post">
+			<img class="featured_post__image" src="{{item.image}}" alt="{{item.post_title}}">
+			<h3 class="featured_post__title"><a class="featured_post__link" href="{{item.link}}">{{item.post_title}}</a></h3>
+			<p class="featured_post__excerpt">{{item.post_excerpt}}</p>
+		</div>
+	{% endfor %}
+</div>

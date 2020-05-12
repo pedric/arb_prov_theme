@@ -3,11 +3,9 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const vueify = require('gulp-vueify');
 const files = { 
-  scssPath: 'src/scss/main.scss',
-  jsPath: 'src/js/**/*.js',
-  vuePath: 'src/vue/**/*.vue'
+  scssPath: 'src/scss/**/*.scss',
+  jsPath: 'src/js/**/*.js'
 }
 
 function css() {
@@ -27,10 +25,13 @@ function javascripts() {
     )
 }
 
-function vue() {
-  return src(files.vuePath)
-    .pipe(vueify())
-    .pipe(dest('vue'));
+function watchTask(){
+    watch([files.scssPath, files.jsPath],
+        {interval: 1000, usePolling: true},
+        series(
+            parallel(css, javascripts)
+        )
+    );    
 }
 
-exports.default = series(css, javascripts, vue);
+exports.default = series(css, javascripts, watchTask);
