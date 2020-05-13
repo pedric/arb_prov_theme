@@ -1,0 +1,21 @@
+.nasa-app {
+	display: flex;
+  justify-content: flex-start;
+	padding: 80px 0;
+
+	.nasa-app__image-wrapper {
+		position: relative;
+		flex-basis: 10%;
+		max-width: 10%;
+		width: 100px;
+		height: 100px;
+		overflow: hidden;
+
+		img {
+			object-fit: cover;
+	    position: absolute;
+	    min-width: 100%;
+	    min-height: 100%;
+		}
+	}
+}

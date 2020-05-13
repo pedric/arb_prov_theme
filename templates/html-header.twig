@@ -12,4 +12,10 @@
     <link rel="author" href="{{ site.theme.link }}/humans.txt" />
     <link rel="pingback" href="{{ site.pingback_url }}" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
+    <style type="text/css">
+        {% include '/css/critical.css' %}
+    </style>
+    {% if share_title and share_body and share_image %}
+        {% include 'partial/open_graph.twig' %}
+    {% endif %}
     {{function('wp_head')}}

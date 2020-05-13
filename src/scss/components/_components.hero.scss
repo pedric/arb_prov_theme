@@ -31,25 +31,29 @@
 
 	    line-height: 1.2;
 	    letter-spacing: 1px;
-      margin-bottom: $spacing*2;
+      margin-bottom: 16px;
     }
 
     p {
     	font-size: 25px;
 	    font-weight: 200;
-	    margin-bottom: $spacing*8;
+	    margin-bottom: 64px;
     }
   }
 
   &__button {
-  	width: 52px;
-    height: 52px;
-    background: $purple;
+    position: relative;
+  	width: 74px;
+    height: 74px;
+    background: #5f3892;
     display: block;
   }
 
   &__button-arrow {
-    	padding: 15px 16px;
-	    max-width: 52px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+	    max-width: 23px;
     }
 }

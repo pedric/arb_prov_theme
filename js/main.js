@@ -1,1 +1,1 @@
-console.log("testfiles");
+for(var menu=document.getElementById("nav-main"),buttons=document.getElementsByClassName("toggle-main-menu"),toggleMenu=function(){menu.classList.contains("active")?(menu.classList.remove("active"),menu.setAttribute("aria-hidden",!0)):(menu.classList.add("active"),menu.setAttribute("aria-hidden",!1))},i=0;i<buttons.length;i++)buttons[i].addEventListener("click",function(){toggleMenu()});

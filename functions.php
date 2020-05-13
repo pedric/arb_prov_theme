@@ -52,7 +52,6 @@ Timber::$dirname = array( 'templates', 'views' );
  */
 Timber::$autoescape = false;
 
-
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
@@ -81,11 +80,12 @@ class StarterSite extends Timber\Site {
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
-		$context['foo']   = 'bar';
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
+		// Open graph
+		$context['share_title']  = get_field('share_title') ? get_field('share_title') : $this->name;
+		$context['share_body']  = get_field('share_body') ? get_field('share_body') : $this->description;
+		$context['share_image']  = get_field('share_image') ? get_field('share_image') : '';
 		return $context;
 	}
 

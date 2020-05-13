@@ -13,7 +13,8 @@
   top: 0;
   right: 0;
   left: 0;
-	padding: $spacing;
+	padding: 8px;
+	z-index: 2;
 	
 	.header__wrapper {
 		display: flex;
@@ -23,6 +24,35 @@
 
 	.header__logo-wrapper {
 		width: 250px;
+	}
+
+	.header__nav {
+		position: fixed;
+		top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+
+    background: #5f3892;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:999;
+
+    transition: left 0.1s ease-in-out;
+
+    h5 {
+    	opacity: 0;
+    	transition: opacity 0.2s ease-in-out;
+    }
+
+    &.active {
+			left: 0%;
+			h5 {
+    	opacity: 1;
+    }
+    }
 	}
 }
 
@@ -38,7 +68,10 @@
     transition: all 0.1s ease-in-out;
     animation: burger 5s infinite;
 
-     &:hover { transform: scale(1.1); }
+     &:hover {
+     	cursor: pointer;
+     	transform: scale(1.1); 
+     }
 
 		.header__burger-slice {
   		position: absolute;

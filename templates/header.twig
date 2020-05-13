@@ -7,7 +7,7 @@
 				</a>
 			</div>
 			<div class="header__toggle">
-				<div class="header__toggle-btn">
+				<div class="header__toggle-btn toggle-main-menu">
 					<span class="header__burger-slice"></span>
 					<span class="header__burger-slice"></span>
 					<span class="header__burger-slice"></span>
@@ -15,8 +15,8 @@
 			</div>
 		</div>
 		<h1 class="visually-hidden" role="banner">{{site.name}}</h1><!-- Hidden -->
-		{# <nav id="nav-main" class="nav-main" role="navigation">
-			{% include "menu.twig" with {'items': menu.get_items} %}
-		</nav> #}
+		<nav class="header__nav toggle-main-menu" id="nav-main" role="navigation">
+			<h5>Fake menews, click anywhere to close</h5>
+		</nav>
 	</div>
 </header>
