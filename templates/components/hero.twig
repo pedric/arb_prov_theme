@@ -1,4 +1,23 @@
+<style>
+	{# Inline this css so media queries can access different image sizes */ #}
+	.hero {
+    background-size: cover;
+    background-position: center;
+    background-image: url({{hero.image.sizes.thumbnail}});
+  }
+	@media (min-width:300px) {
+		.hero {
+			background-image: url({{hero.image.sizes.medium}});
+		}			
+	}
+	@media (min-width:600px) {
+		.hero {
+			background-image: url({{hero.image.sizes.large}});
+		}
+	}
+</style>
 <div class="hero">
+	{# Changed to background image for ie11
 	<img
 	class="hero__image"
 	src="{{hero.image.sizes.large}}" 
@@ -7,7 +26,7 @@
 	{{hero.image.sizes.thumbnail}} 200w,
 	{{hero.image.sizes.medium}} 300w,
 	{{hero.image.sizes.large}} 1000w,
-	">
+	"> #}
 	<div class="hero__content">
 		{{hero.body}}
 	</div>

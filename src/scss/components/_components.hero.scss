@@ -1,5 +1,5 @@
 .hero {
-	position: relative;
+	// position: relative;
 
 	display: flex;
 	flex-direction: column;
@@ -9,13 +9,13 @@
   height: 90vh;
   max-height: 800px;
 
-  &__image {
-    position: absolute;
-    object-fit: cover;
-    min-height: 100%;
-    min-width: 100%;
-    z-index: -1;
-  }
+  // &__image {
+  //   position: absolute;
+  //   object-fit: cover;
+  //   min-height: 100%;
+  //   min-width: 100%;
+  //   z-index: -1;
+  // }
 
   &__content {
     color: #fff;
