@@ -1204,6 +1204,8 @@ ul.no-bullet, ol.no-bullet {
   padding-left: 0.625rem;
   max-width: 75rem;
   margin: 0 auto; }
+  .grid-container--wide {
+    max-width: 1920px; }
 
 @media print, screen and (min-width: 40em) {
   .grid-container {
