@@ -21,6 +21,8 @@
 $frontpage_id = get_option('page_on_front');
 $today = date("Ymd");
 $last_api_call_date= false;
+$last_api_call_date = false;
+$nasa_image_url = false;
 
 function updated_url_from_nasa_api() {
 	$api_url = "https://apodapi.herokuapp.com/api/";
@@ -28,11 +30,17 @@ function updated_url_from_nasa_api() {
 	return $space_Data['url'];
 }
 
-// Get last api call from db (date and image url)
+// Get last api call from db (date)
 $last_api_call = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
-$last_api_call_date = ($last_api_call[0]->meta_value) ? $last_api_call[0]->meta_value : false ;
+if($last_api_call) {
+	$last_api_call_date = ($last_api_call[0]->meta_value) ? $last_api_call[0]->meta_value : false ;
+}
+
+// Get last api call from db (image url)
 $nasa_image = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
-$nasa_image_url = ($nasa_image[0]->meta_value) ? $nasa_image[0]->meta_value : false ; // This is the var that will be used for the front-page
+if($nasa_image) {
+	$nasa_image_url = ($nasa_image[0]->meta_value) ? $nasa_image[0]->meta_value : false ; // This is the var that will be used for the front-page
+}
 
 // If no date exist in db, init data in db
 if (!$last_api_call_date) {
@@ -45,6 +53,7 @@ if(!$nasa_image_url) {
 	$url = updated_url_from_nasa_api();
 	$sql = $wpdb->prepare("INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value ) VALUES ( %d, %s, %d )", $frontpage_id, 'nasa_image', $url); // Save image url
 	$wpdb->query($sql);
+	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$url' WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
 }
 
 // Update table with new date and image url for first visitor each day
