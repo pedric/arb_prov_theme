@@ -1,13 +1,16 @@
 .hero {
 	// position: relative;
 
+  background-size: cover;
+  background-position: center;
+
 	display: flex;
 	flex-direction: column;
   justify-content: center;
   align-items: center;
 
   height: 90vh;
-  max-height: 800px;
+  max-height: 1080px;
 
   // &__image {
   //   position: absolute;
@@ -20,13 +23,15 @@
   &__content {
     color: #fff;
     text-align: center;
+    max-width: 960px;
+    margin-top: 181px;
 
     h1 {
     	text-transform: uppercase;
-    	font-weight: 800;
+    	font-weight: 700;
       font-size: 3em;
       @media screen and (min-width:700px) {
-        font-size: 5em;
+        font-size: 102px;
       }
 
 	    line-height: 1.2;
@@ -35,7 +40,7 @@
     }
 
     p {
-    	font-size: 25px;
+    	font-size: 30px;
 	    font-weight: 200;
 	    margin-bottom: 64px;
     }

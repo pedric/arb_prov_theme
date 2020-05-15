@@ -1,8 +1,6 @@
 <style>
 	{# Inline this css so media queries can access different image sizes */ #}
 	.hero {
-    background-size: cover;
-    background-position: center;
     background-image: url({{hero.image.sizes.thumbnail}});
   }
 	@media (min-width:300px) {
@@ -16,7 +14,7 @@
 		}
 	}
 </style>
-<div class="hero">
+<div class="hero" title="{{hero.image.alt}}">
 	{# Changed to background image for ie11
 	<img
 	class="hero__image"

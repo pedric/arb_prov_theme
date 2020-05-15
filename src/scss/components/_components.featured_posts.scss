@@ -1,5 +1,5 @@
 .featured_posts {
-  padding: 132px 0;
+  padding: 132px 0 0 0;
 
   .featured_post {
     position: relative;
@@ -43,7 +43,12 @@
       text-transform: uppercase;
       font-weight: 800;
       font-size: 18px;
+      font-family: $font-regular;
       width: 100%;
+      padding: 0 50px;
+      @media screen and (min-width:1000px) {
+        font-size: 25px;
+      }
 
       .featured_post__link {
         width: 100%;

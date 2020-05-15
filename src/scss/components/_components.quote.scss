@@ -4,7 +4,11 @@
 	justify-content: center;
 	align-items: center;
 
-	padding: $spacing*10 0;
+	padding: 114px 0 226px 0;
+
+	&--no-author {
+		padding: 114px 0 126px 0;		
+	}
 
 	&__icon {
 		max-width: 60px;
@@ -18,9 +22,9 @@
 		padding: 60px 0 40px;
 
 		text-align: center;
-    padding: 60px 0;
-    max-width: 630px;
-    font-size: 22px;
+    padding: 46px 0;
+    max-width: 960px;
+    font-size: 30px;
     font-weight: 400;
     font-family: $font-regular;
     line-height: 1.8;
@@ -30,7 +34,8 @@
 	&__author {
 		text-transform: uppercase;
 		font-weight: 800;
-		font-size: 12px;
+		font-size: 16px;
 		color: $purple;
+		letter-spacing: 0.8px;
 	}
 }

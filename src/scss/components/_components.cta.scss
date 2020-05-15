@@ -21,16 +21,20 @@
         margin: 80px 0 80px;
         background: rgba(255,255,255,.8);
         max-width: 100%;
-    @media screen and (min-width:700px) {
-    	background: #fff;
-		max-width: 50%;
-        padding: $spacing*8;
+        @media screen and (min-width:1000px) {
+        	background: #fff;
+    		max-width: 65%;
+            padding: 116px 186px 116px 128px;
+        }
+
+    h2,h3,p,ul {
+        max-width: 640px;
     }
 
     h2 {
     	font-family: inherit;
     	text-transform: uppercase;
-    	font-size: 1.6em;
+    	font-size: 40px;
     	font-weight: 700;
 
     	margin-bottom: $spacing*4;	
@@ -46,16 +50,16 @@
     }
 
     p {
-    	margin: $spacing 0;
-    	font-size: .8em;
+    	margin: 32px 0;
+    	font-size: 20px;
     }
 
     ul {
   			list-style: none;
 
 			li{
-				padding: $spacing 0;
-				font-size: .8em;
+				padding: 16px 0;
+				font-size: 20px;
 
 				a {
 					color: $purple;
@@ -78,13 +82,13 @@
     	font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
     	text-transform: unset;
     	font-weight: 400;
-    	font-size: .8em;
+    	font-size: 18px;
 
     	margin-top: $spacing;
 
 	    display: inline-block;
-			padding: 0.85em 100px 0.85em 1em;
-		 	background-color: $purple;
+		padding: 17px 165px 17px 28px;
+	 	background-color: $purple;
 
 		 	&:focus,
 		 	&:hover {
@@ -95,13 +99,13 @@
 
     .cta__button-arrow {
     	position: absolute;
-	    top: 0px;
+	    top: 7px;
 	    right: 3px;
-	    width: 38px;
-	    height: 41px;
+	    width: 60px;
+	    height: 48px;
 	    transform: rotate(-90deg);
 	    padding: 16px 0px 8px 0px;
-	    border-top: 1px solid rgba(255, 255, 255, 0.4);
+	    border-top: 2px solid rgba(255, 255, 255, 0.4);
     }
 	}
 }

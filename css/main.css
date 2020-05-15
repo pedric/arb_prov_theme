@@ -4591,10 +4591,13 @@ html.is-reveal-open body {
       text-transform: uppercase;
       text-align: center;
       font-weight: 800;
-      font-size: 12px; }
+      font-size: 16px;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px; }
     .footer .footer__contact-box p {
       text-align: center;
-      font-size: 12px; }
+      font-size: 16px;
+      line-height: 28px; }
       .footer .footer__contact-box p a {
         color: #000; }
         .footer .footer__contact-box p a:focus, .footer .footer__contact-box p a:hover {
@@ -4604,9 +4607,8 @@ html.is-reveal-open body {
       display: flex;
       justify-content: center; }
     .footer .footer__contact-box .footer__social-icons {
-      width: 18px;
-      height: 18px;
-      margin: 0 14px; }
+      height: 32px;
+      margin: 0 24px; }
   .footer .footer_copyright {
     font-size: 12px; }
 
@@ -4620,7 +4622,9 @@ html.is-reveal-open body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 80px 0; }
+  padding: 114px 0 226px 0; }
+  .quote--no-author {
+    padding: 114px 0 126px 0; }
   .quote__icon {
     max-width: 60px; }
     .quote__icon--footer {
@@ -4628,9 +4632,9 @@ html.is-reveal-open body {
   .quote .quote__content {
     padding: 60px 0 40px;
     text-align: center;
-    padding: 60px 0;
-    max-width: 630px;
-    font-size: 22px;
+    padding: 46px 0;
+    max-width: 960px;
+    font-size: 30px;
     font-weight: 400;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
     line-height: 1.8;
@@ -4638,8 +4642,9 @@ html.is-reveal-open body {
   .quote__author {
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 12px;
-    color: #5f3892; }
+    font-size: 16px;
+    color: #5f3892;
+    letter-spacing: 0.8px; }
 
 .cta {
   position: relative; }
@@ -4659,15 +4664,17 @@ html.is-reveal-open body {
     margin: 80px 0 80px;
     background: rgba(255, 255, 255, 0.8);
     max-width: 100%; }
-    @media screen and (min-width: 700px) {
+    @media screen and (min-width: 1000px) {
       .cta .cta__content {
         background: #fff;
-        max-width: 50%;
-        padding: 64px; } }
+        max-width: 65%;
+        padding: 116px 186px 116px 128px; } }
+    .cta .cta__content h2, .cta .cta__content h3, .cta .cta__content p, .cta .cta__content ul {
+      max-width: 640px; }
     .cta .cta__content h2 {
       font-family: inherit;
       text-transform: uppercase;
-      font-size: 1.6em;
+      font-size: 40px;
       font-weight: 700;
       margin-bottom: 32px; }
     .cta .cta__content h3 {
@@ -4677,13 +4684,13 @@ html.is-reveal-open body {
       font-weight: 700;
       margin: 32px 0 16px; }
     .cta .cta__content p {
-      margin: 8px 0;
-      font-size: .8em; }
+      margin: 32px 0;
+      font-size: 20px; }
     .cta .cta__content ul {
       list-style: none; }
       .cta .cta__content ul li {
-        padding: 8px 0;
-        font-size: .8em; }
+        padding: 16px 0;
+        font-size: 20px; }
         .cta .cta__content ul li a {
           color: #5f3892; }
         .cta .cta__content ul li::before {
@@ -4699,26 +4706,26 @@ html.is-reveal-open body {
       font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
       text-transform: unset;
       font-weight: 400;
-      font-size: .8em;
+      font-size: 18px;
       margin-top: 8px;
       display: inline-block;
-      padding: 0.85em 100px 0.85em 1em;
+      padding: 17px 165px 17px 28px;
       background-color: #5f3892; }
       .cta .cta__content .cta__button:focus, .cta .cta__content .cta__button:hover {
         color: #fff;
         background-color: #533180; }
     .cta .cta__content .cta__button-arrow {
       position: absolute;
-      top: 0px;
+      top: 7px;
       right: 3px;
-      width: 38px;
-      height: 41px;
+      width: 60px;
+      height: 48px;
       transform: rotate(-90deg);
       padding: 16px 0px 8px 0px;
-      border-top: 1px solid rgba(255, 255, 255, 0.4); }
+      border-top: 2px solid rgba(255, 255, 255, 0.4); }
 
 .featured_posts {
-  padding: 132px 0; }
+  padding: 132px 0 0 0; }
   .featured_posts .featured_post {
     position: relative;
     overflow: hidden;
@@ -4752,7 +4759,12 @@ html.is-reveal-open body {
       text-transform: uppercase;
       font-weight: 800;
       font-size: 18px;
-      width: 100%; }
+      font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+      width: 100%;
+      padding: 0 50px; }
+      @media screen and (min-width: 1000px) {
+        .featured_posts .featured_post .featured_post__title {
+          font-size: 25px; } }
       .featured_posts .featured_post .featured_post__title .featured_post__link {
         width: 100%;
         height: 100%;
@@ -4776,17 +4788,7 @@ html.is-reveal-open body {
 
 .nasa-app {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 80px 0; }
-  .nasa-app .nasa-app__image-wrapper {
-    position: relative;
-    flex-basis: 10%;
-    max-width: 10%;
-    width: 100px;
-    height: 100px;
-    overflow: hidden; }
-    .nasa-app .nasa-app__image-wrapper img {
-      object-fit: cover;
-      position: absolute;
-      min-width: 100%;
-      min-height: 100%; }

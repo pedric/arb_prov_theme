@@ -13,6 +13,49 @@
  * @since   Timber 0.1
  */
 
+/*
+* Handle the nasa API
+* This block lets the first daily user update the nasa image url in the database
+* Possible option would be a cron job and even save the image (not url) in local db
+*/
+$frontpage_id = get_option('page_on_front');
+$today = date("Ymd");
+$last_api_call_date= false;
+
+function updated_url_from_nasa_api() {
+	$api_url = "https://apodapi.herokuapp.com/api/";
+	$space_Data = json_decode(file_get_contents($api_url), true);
+	return $space_Data['url'];
+}
+
+// Get last api call from db (date and image url)
+$last_api_call = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
+$last_api_call_date = ($last_api_call[0]->meta_value) ? $last_api_call[0]->meta_value : false ;
+$nasa_image = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
+$nasa_image_url = ($nasa_image[0]->meta_value) ? $nasa_image[0]->meta_value : false ; // This is the var that will be used for the front-page
+
+// If no date exist in db, init data in db
+if (!$last_api_call_date) {
+	$sql = $wpdb->prepare("INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value ) VALUES ( %d, %s, %d )", $frontpage_id, 'last_api_call_to_nasa', $today); // Save time of api call
+	$wpdb->query($sql);
+}
+
+// If no image url exist in db, init data in db
+if(!$nasa_image_url) {
+	$url = updated_url_from_nasa_api();
+	$sql = $wpdb->prepare("INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value ) VALUES ( %d, %s, %d )", $frontpage_id, 'nasa_image', $url); // Save image url
+	$wpdb->query($sql);
+}
+
+// Update table with new date and image url for first visitor each day
+if($nasa_image_url && $last_api_call_date && $last_api_call_date < $today) {
+	$url = updated_url_from_nasa_api();
+	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$today' WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
+	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$url' WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
+}
+
+// !end of nasa API block
+
 $context = Timber::context();
 $context['posts'] = new Timber\PostQuery();
 $context['hero'] = get_field('hero');
@@ -35,9 +78,6 @@ for ($i=0;$i<count($context['featured_posts']);$i++) {
 	$context['featured_posts'][$i]->link = $link;
 }
 
-// Get data from nasa
-$today = date("Y-m-d");
-$api_url = "https://apodapi.herokuapp.com/api/?start_date=2020-05-01&end_date=".$today."&thumbs=true&image_thumbnail_size=480&image_thumbnail_size=240";
-$context['space_data'] = $space_Data =  json_decode(file_get_contents($api_url), true);
+$context['nasa_image_url'] = ($nasa_image_url) ? $nasa_image_url : false ;
 
 Timber::render( 'front-page.twig', $context );

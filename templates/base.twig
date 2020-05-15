@@ -1,8 +1,7 @@
 {% block html_head_container %}
 
 {% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
+	{% block head %}{% endblock %}
 	</head>
 {% endblock %}
 
@@ -22,9 +21,7 @@
 			{{ function('wp_footer') }}
 		{% endblock %}
 
-		{% if space_data %}
-			{% include 'components/space_data.twig' %}
-		{% endif %}
+		{% block nasa_image %}{% endblock %}
 
 		<script src="{{ site.theme.link }}/js/main.js" type="text/javascript"></script>
 	</body>

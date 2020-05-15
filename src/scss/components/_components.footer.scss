@@ -9,19 +9,19 @@
 
 	.footer__contact-box {
 		flex-basis: 100%;
-    max-width: 100%;
-    margin: 8px auto;
+        max-width: 100%;
+        margin: 8px auto;
 
-    @media screen and (min-width:700px) {
-      flex-basis: 33.3334%;
-      max-width: 33.3334%;
-    }
+        @media screen and (min-width:700px) {
+            flex-basis: 33.3334%;
+            max-width: 33.3334%;
+        }
 
     &:nth-child(2) {
     	@media screen and (min-width:700px) {
-				border-left: 2px solid #f3f0f7;
-				border-right: 2px solid #f3f0f7;
-			}
+			border-left: 2px solid #f3f0f7;
+			border-right: 2px solid #f3f0f7;
+		}
     }
 
     h4 {
@@ -29,19 +29,22 @@
     	text-transform: uppercase;
     	text-align: center;
     	font-weight: 800;
-    	font-size: 12px;
+    	font-size: 16px;
+        letter-spacing: 0.8px;
+        margin-bottom: 14px;
     }
 
     p {
     	text-align: center;
-    	font-size: 12px;
+    	font-size: 16px;
+        line-height: 28px;
 
     	a {
     		color: #000;
     		&:focus,
     		&:hover {
-					color: #000;
-					text-decoration: underline;
+				color: #000;
+				text-decoration: underline;
     		}
     	}
     }
@@ -52,9 +55,8 @@
 		}
 
     .footer__social-icons {
-	    width: 18px;
-	    height: 18px;
-	    margin: 0 14px;
+	    height: 32px;
+	    margin: 0 24px;
     }
 	}
 

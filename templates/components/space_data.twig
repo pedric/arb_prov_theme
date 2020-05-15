@@ -1,8 +1,4 @@
 <div class="nasa-app">
-	{% for item in space_data %}
-		<div class="nasa-app__image-wrapper">
-			<img src="{{ item.url|resize(100) }}" alt="{{item.title}}">
-		</div>
-{% endfor %}
+	<img src="{{ nasa_image_url|resize(600) }}" alt="Daily image from Nasa">
+	<h6>(Bild från Nasa API)</h6>
 </div>
-<h6>(Bilder från Nasa API)</h6>
