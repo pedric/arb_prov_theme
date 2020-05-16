@@ -15,12 +15,12 @@
 
 /*
 * Handle the nasa API
-* This block lets the first daily user update the nasa image url in the database
-* Possible option would be a cron job and even save the image (not url) in local db
+* This block lets the first daily user update the nasa image in /images/nasa_api/
+* Possible option would be a daily cron job
 */
 $frontpage_id = get_option('page_on_front');
 $today = date("Ymd");
-$last_api_call_date= false;
+$last_api_call_date = false;
 $last_api_call_date = false;
 $nasa_image_url = false;
 
@@ -31,45 +31,36 @@ function updated_url_from_nasa_api() {
 }
 
 function save_image_to_folder($image) {
+	// first clear folder contents
+	array_map( 'unlink', array_filter((array) glob(get_template_directory().'/images/nasa_api/*') ) );
+	// Then save file
 	$ch = curl_init($image);
-	$fp = fopen(get_template_directory().'/images/nasa.jpg', 'wb');
+	$fp = fopen(get_template_directory().'/images/nasa_api/nasa.jpg', 'w+');
+	curl_setopt($ch, CURLOPT_URL, $image);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($ch, CURLOPT_HEADER, 'Content-Type: image/jpeg');
 	curl_setopt($ch, CURLOPT_FILE, $fp);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_exec($ch);
 	curl_close($ch);
 	fclose($fp);
 }
 
-// Get last api call from db (date)
+//Get last api call from db (date)
 $last_api_call = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
 if($last_api_call) {
 	$last_api_call_date = ($last_api_call[0]->meta_value) ? $last_api_call[0]->meta_value : false ;
 }
 
-// Get last api call from db (image url). BY THIS WAY OF DOING IT THE URL GET SAVED IN DB, NOW UPDATED TO SAVE FILE TO FOLDER
-// $nasa_image = $wpdb->get_results("SELECT meta_value FROM $wpdb->postmeta WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
-// if($nasa_image) {
-// 	$nasa_image_url = ($nasa_image[0]->meta_value) ? $nasa_image[0]->meta_value : false ; // This is the var that will be used for the front-page
-// }
-// If no image url exist in db, init data in db
-// if(!$nasa_image_url) {
-// 	$url = updated_url_from_nasa_api();
-// 	$sql = $wpdb->prepare("INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value ) VALUES ( %d, %s, %d )", $frontpage_id, 'nasa_image', $url); // Save image url
-// 	$wpdb->query($sql);
-// 	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$url' WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
-// }
-
-// If no date exist in db, init data in db
+// If no date exist in db, init data in db and save file
 if (!$last_api_call_date) {
 	$sql = $wpdb->prepare("INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value ) VALUES ( %d, %s, %d )", $frontpage_id, 'last_api_call_to_nasa', $today); // Save time of api call
 	$wpdb->query($sql);
+	save_image_to_folder( updated_url_from_nasa_api());
 }
 
 // Update table with new date and save image to folder for first visitor each day
 if($last_api_call_date && $last_api_call_date < $today) {
-	$url = updated_url_from_nasa_api();
-	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$today' WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
-	$sql = $wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$url' WHERE post_id = $frontpage_id AND meta_key = 'nasa_image'");
+	$wpdb->query("UPDATE $wpdb->postmeta SET meta_value = '$today' WHERE post_id = $frontpage_id AND meta_key = 'last_api_call_to_nasa'");
 	// Save image to folder
 	save_image_to_folder( updated_url_from_nasa_api());
 }
