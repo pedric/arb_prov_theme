@@ -4760,14 +4760,14 @@ html.is-reveal-open body {
       font-weight: 800;
       font-size: 18px;
       font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
-      width: 100%;
-      padding: 0 50px; }
+      width: 100%; }
       @media screen and (min-width: 1000px) {
         .featured_posts .featured_post .featured_post__title {
           font-size: 25px; } }
       .featured_posts .featured_post .featured_post__title .featured_post__link {
         width: 100%;
         height: 100%;
+        padding: 0 50px;
         color: #fff;
         display: flex;
         justify-content: center;
