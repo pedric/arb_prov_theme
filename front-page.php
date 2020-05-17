@@ -21,15 +21,15 @@
 $frontpage_id = get_option('page_on_front');
 $today = date("Ymd");
 $last_api_call_date = false;
-$last_api_call_date = false;
-$nasa_image_url = false;
 
+// returns the url of image
 function updated_url_from_nasa_api() {
 	$api_url = "https://apodapi.herokuapp.com/api/";
 	$space_Data = json_decode(file_get_contents($api_url), true);
 	return $space_Data['url'];
 }
 
+// function to clear nasa_api folder contents and save image to folder
 function save_image_to_folder($image) {
 	// first clear folder contents
 	array_map( 'unlink', array_filter((array) glob(get_template_directory().'/images/nasa_api/*') ) );
